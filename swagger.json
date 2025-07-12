@@ -1,0 +1,62 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de Gestão de Login",
+    "version": "1.0.0",
+    "description": "API para estudo de testes de software, com endpoints de login e lembrete de senha."
+  },
+  "servers": [
+    { "url": "http://localhost:3000/api" }
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "Realiza login do usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": { "type": "string" },
+                  "password": { "type": "string" }
+                },
+                "required": ["username", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Login realizado com sucesso." },
+          "401": { "description": "Login ou senha inválidos." },
+          "403": { "description": "Usuário bloqueado por tentativas inválidas." },
+          "404": { "description": "Usuário não cadastrado." }
+        }
+      }
+    },
+    "/reminder": {
+      "post": {
+        "summary": "Lembrete de senha do usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": { "type": "string" }
+                },
+                "required": ["username"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Retorna o lembrete de senha." },
+          "404": { "description": "Usuário não cadastrado." }
+        }
+      }
+    }
+  }
+} 
