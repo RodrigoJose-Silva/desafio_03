@@ -72,6 +72,24 @@ Este projeto utiliza **GitHub Actions** para rodar os testes automaticamente a c
 
 ---
 
+## Estrutura do Projeto (Arquitetura em Camadas)
+
+| Path              | Objetivo                                                |
+| ----------------- | ------------------------------------------------------- |
+| src/controllers/  | Recebe requisições e retorna respostas.                 |
+| src/services/     | Lógica de negócio e orquestração das operações.         |
+| src/repositories/ | Acesso e manipulação dos dados (banco, arquivos, etc).  |
+| src/models/       | Modelos de dados da aplicação.                          |
+| src/routes.js     | Define as rotas da API e direciona para os controllers. |
+| src/app.js        | Configuração da aplicação Express.                      |
+| src/server.js     | Inicialização do servidor HTTP.                         |
+| rest/test/        | Testes automatizados da API.                            |
+| swagger.json      | Documentação da API.                                    |
+
+> Cada camada possui responsabilidade única, facilitando manutenção, testes e evolução do projeto.
+
+---
+
 ## ℹ️ Observações
 
 - Não há banco de dados: os dados são mantidos em memória.
